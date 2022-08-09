@@ -1,4 +1,4 @@
-#Alien Invasion
+# Alien Invasion
 This is the educational project representing the game Alien Invasion
 
 # Contents
