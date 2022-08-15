@@ -7,6 +7,7 @@ class Settings:
 
         # Настройки корабля
         self.ship_speed = 5
+        self.ship_limit = 3
 
         # Настройки пули
         self.bullet_speed = 5
