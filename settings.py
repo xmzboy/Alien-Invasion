@@ -1,5 +1,7 @@
 class Settings:
+    """Класс для всех основных настроек игры"""
     def __init__(self):
+        """Инициализация настроек"""
         # Настройки экрана
         self.screen_width = 1200
         self.screen_height = 800
