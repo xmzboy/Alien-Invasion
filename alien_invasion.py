@@ -76,7 +76,7 @@ class AlienInvasion:
 
     def _update_screen(self):
         """Обновление экрана"""
-        #self.screen.fill(self.settings.bg_color)
+        # self.screen.fill(self.settings.bg_color)
         self.screen.blit(self.bg, (0, 0))
         self.ship.blitme()
         for bullet in self.bullets.sprites():
@@ -146,6 +146,7 @@ class AlienInvasion:
         self._create_fleet()
         self.ship.center_ship()
         sleep(0.5)
+
 
 if __name__ == '__main__':
     ai = AlienInvasion()
