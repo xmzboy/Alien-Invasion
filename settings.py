@@ -8,18 +8,24 @@ class Settings:
         self.bg_color = (16, 20, 88)
 
         # Настройки корабля
-        self.ship_speed = 5
         self.ship_limit = 3
 
         # Настройки пули
-        self.bullet_speed = 5
         self.bullet_width = 3
         self.bullet_height = 30
         self.bullet_color = (255, 50, 0)
         self.bullets_allowed = 5
 
         # Настройки пришельцев
-        self.alien_speed = 1
         self.fleet_drop_speed = 10
+
+        self.init_dynamic_settings()
+
+    def init_dynamic_settings(self):
+        """Настройки изменяемые во время игры"""
+        self.ship_speed = 5
+        self.bullet_speed = 5
+        self.alien_speed = 1
         self.fleet_direction = 1
+        self.alien_points = 50
 
