@@ -13,10 +13,11 @@ class Settings:
         # Настройки пули
         self.bullet_width = 3
         self.bullet_height = 30
-        self.bullet_color = (255, 50, 0)
+        self.bullet_color = (255, 150, 0)
         self.bullets_allowed = 5
 
         # Настройки пришельцев
+<<<<<<< Updated upstream
         self.fleet_drop_speed = 10
 
         self.init_dynamic_settings()
@@ -26,6 +27,10 @@ class Settings:
         self.ship_speed = 5
         self.bullet_speed = 5
         self.alien_speed = 1
+=======
+        self.alien_speed = 1
+        self.fleet_drop_speed = 15
+>>>>>>> Stashed changes
         self.fleet_direction = 1
         self.alien_points = 50
 
