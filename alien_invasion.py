@@ -31,7 +31,8 @@ class AlienInvasion:
         self.aliens = pygame.sprite.Group()
         self._create_fleet()
 
-        self.button = Button(self, "Play")
+        self.button = Button(self, "Play", (0, 220, 0))
+        self.hard_button = Button(self, "Hard Mode", (255, 0, 0), 200)
 
     def run_game(self):
         """Главный цикл игры"""
@@ -76,6 +77,10 @@ class AlienInvasion:
     def _check_play_button_events(self, flag=False):
         mouse_pos = pygame.mouse.get_pos()
         if self.button.rect.collidepoint(mouse_pos) or flag:
+            self.settings.init_dynamic_settings()
+            self._start_game()
+        if self.hard_button.rect.collidepoint(mouse_pos):
+            self.settings.init_hard_dynamic_settings()
             self._start_game()
 
     def _start_game(self):
@@ -108,6 +113,7 @@ class AlienInvasion:
 
         if not self.stats.game_active:
             self.button.draw_button()
+            self.hard_button.draw_button()
         pygame.display.flip()
 
     def _create_fleet(self):
@@ -151,6 +157,7 @@ class AlienInvasion:
         if not self.aliens:
             self.bullets.empty()
             self._create_fleet()
+            self.settings.increase_speed()
 
     def _check_fleet_edges(self):
         """Проверка касания пришельцем края экрана"""
