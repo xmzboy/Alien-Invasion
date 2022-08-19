@@ -37,9 +37,10 @@ class AlienInvasion:
         """Главный цикл игры"""
         while True:
             self._check_events()
-            self.ship.update()
-            self._update_aliens()
-            self._update_bullets()
+            if self.stats.game_active:
+                self.ship.update()
+                self._update_aliens()
+                self._update_bullets()
             self._update_screen()
 
     def _check_events(self):
@@ -109,6 +110,7 @@ class AlienInvasion:
         self.aliens.update()
         if pygame.sprite.spritecollideany(self.ship, self.aliens):
             self._ship_hit()
+        self._check_aliens_bottom()
 
     def _update_bullets(self):
         """Обновление положения пуль на экране"""
@@ -139,6 +141,7 @@ class AlienInvasion:
         self.settings.fleet_direction *= -1
 
     def _ship_hit(self):
+<<<<<<< Updated upstream
         """Обработка удара по кораблю"""
         self.stats.ship_left -= 1
         self.aliens.empty()
@@ -146,6 +149,24 @@ class AlienInvasion:
         self._create_fleet()
         self.ship.center_ship()
         sleep(0.5)
+=======
+        if self.stats.ship_left > 0:
+            self.stats.ship_left -= 1
+            self.aliens.empty()
+            self.bullets.empty()
+            self._create_fleet()
+            self.ship.center_ship()
+            sleep(0.5)
+        else:
+            self.stats.game_active = False
+
+    def _check_aliens_bottom(self):
+        screen_rect = self.screen.get_rect()
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom >= screen_rect.bottom:
+                self._ship_hit()
+                break
+>>>>>>> Stashed changes
 
 
 if __name__ == '__main__':
