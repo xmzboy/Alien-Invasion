@@ -17,8 +17,9 @@ class Settings:
         self.bullets_allowed = 5
 
         # Настройки пришельцев
-<<<<<<< Updated upstream
-        self.fleet_drop_speed = 10
+        self.fleet_drop_speed = 150
+
+        self.speedup_scale = 1.1
 
         self.init_dynamic_settings()
 
@@ -27,10 +28,7 @@ class Settings:
         self.ship_speed = 5
         self.bullet_speed = 5
         self.alien_speed = 1
-=======
-        self.alien_speed = 1
-        self.fleet_drop_speed = 15
->>>>>>> Stashed changes
+
         self.fleet_direction = 1
         self.alien_points = 50
 
