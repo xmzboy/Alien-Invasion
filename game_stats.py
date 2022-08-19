@@ -4,6 +4,7 @@ class GameStats:
         """Инициализация статистики"""
         self.settings = ai_game.settings
         self.reset_stats()
+        self.game_active = True
 
         # Старт игры в неактивном состоянии
         self.game_active = False
