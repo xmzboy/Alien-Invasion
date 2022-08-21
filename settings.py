@@ -17,9 +17,10 @@ class Settings:
         self.bullets_allowed = 5
 
         # Настройки пришельцев
-        self.fleet_drop_speed = 15
+        self.fleet_drop_speed = 150
 
         self.speedup_scale = 1.5
+        self.score_scale = 1.5
 
         self.init_dynamic_settings()
 
@@ -36,6 +37,8 @@ class Settings:
         self.ship_speed *= self.speedup_scale
         self.bullet_speed *= self.speedup_scale
         self.alien_speed *= self.speedup_scale
+
+        self.alien_points = int(self.alien_points * self.score_scale)
 
     def init_hard_dynamic_settings(self):
         """Настройки изменяемые во время игры"""
