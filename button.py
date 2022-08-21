@@ -17,7 +17,8 @@ class Button:
         if not shift:
             self.rect.center = self.screen_rect.center
         else:
-            self.rect.center = (960, 640)
+            self.rect.centerx = self.screen_rect.centerx
+            self.rect.top = 600
 
         self._prep_msg(msg, shift)
 
@@ -27,7 +28,8 @@ class Button:
         if not shift:
             self.msg_image_rect.center = self.rect.center
         else:
-            self.msg_image_rect.center = (960, 640)
+            self.msg_image_rect.centerx = self.rect.centerx
+            self.msg_image_rect.top = 610
 
     def draw_button(self):
         self.screen.fill(self.button_color, self.rect)
