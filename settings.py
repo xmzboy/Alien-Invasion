@@ -5,7 +5,8 @@ class Settings:
         # Настройки экрана
         self.screen_width = 1200
         self.screen_height = 800
-        self.bg_color = (16, 20, 88)
+        self.bg_color = (30, 0, 80)
+        self.bg_intro_color = (16, 20, 88)
 
         # Настройки корабля
         self.ship_limit = 3
@@ -17,7 +18,7 @@ class Settings:
         self.bullets_allowed = 5
 
         # Настройки пришельцев
-        self.fleet_drop_speed = 150
+        self.fleet_drop_speed = 15
 
         self.speedup_scale = 1.5
         self.score_scale = 1.5
