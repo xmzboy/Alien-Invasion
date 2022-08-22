@@ -33,8 +33,10 @@ class AlienInvasion:
         self.aliens = pygame.sprite.Group()
         self._create_fleet()
 
-        self.button = Button(self, "Play", (0, 220, 0))
-        self.hard_button = Button(self, "Hard Mode", (255, 0, 0), 200)
+        self.button = Button(self, "Play", (0, 200, 0))
+        self.hard_button = Button(self, "Hard Mode", (200, 20, 0), 200)
+
+        self.intro = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
     def run_game(self):
         """Главный цикл игры"""
@@ -50,6 +52,8 @@ class AlienInvasion:
         """Проверка событий"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
+                with open('stats/scores.txt', 'w') as f:
+                    f.write(str(self.stats.high_score))
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
@@ -108,8 +112,7 @@ class AlienInvasion:
 
     def _update_screen(self):
         """Обновление экрана"""
-        # self.screen.fill(self.settings.bg_color)
-        self.screen.blit(self.bg, (0, 0))
+        self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
@@ -117,6 +120,8 @@ class AlienInvasion:
 
         self.sb.show_score()
         if not self.stats.game_active:
+            self.intro.fill(self.settings.bg_intro_color)
+            self.ship.blitme(intro=True)
             self.button.draw_button()
             self.hard_button.draw_button()
         pygame.display.flip()
@@ -165,11 +170,14 @@ class AlienInvasion:
             self.sb.prep_score()
             self.sb.check_high_score()
         if not self.aliens:
-            self.bullets.empty()
-            self._create_fleet()
-            self.settings.increase_speed()
-            self.stats.level += 1
-            self.sb.prep_level()
+           self.start_new_level()
+
+    def start_new_level(self):
+        self.bullets.empty()
+        self._create_fleet()
+        self.settings.increase_speed()
+        self.stats.level += 1
+        self.sb.prep_level()
 
     def _check_fleet_edges(self):
         """Проверка касания пришельцем края экрана"""
