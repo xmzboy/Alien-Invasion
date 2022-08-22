@@ -20,9 +20,16 @@ class Ship(Sprite):
         self.moving_right = False
         self.moving_left = False
 
-    def blitme(self):
+    def blitme(self, intro=False):
         """Отрисовка корабля в текущем положении"""
-        self.screen.blit(self.image, self.rect)
+        self.image_intro = pygame.image.load('images/spaceship.png')
+        self.intro_rect = self.image_intro.get_rect()
+        if intro:
+            self.intro_rect.centerx = self.screen_rect.centerx
+            self.intro_rect.top = self.intro_rect.top + 350
+            self.screen.blit(self.image_intro, self.intro_rect)
+        else:
+            self.screen.blit(self.image, self.rect)
 
     def update(self):
         """Обновление позиции корабля"""
