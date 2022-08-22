@@ -10,7 +10,8 @@ class GameStats:
         self.game_active = False
 
         # Наилучший результат
-        self.high_score = 0
+        with open('stats/scores.txt') as f:
+            self.high_score = int(f.read())
 
     def reset_stats(self):
         """Сброс статистики"""
