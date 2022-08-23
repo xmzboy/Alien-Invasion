@@ -18,23 +18,25 @@ class AlienInvasion:
         pygame.init()
         self.settings = Settings()
 
+        # Настройки экрана
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         self.settings.screen_width = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
         pygame.display.set_caption('Alien Invasion')
-        self.bg = pygame.image.load("images/bg.jpg")
+
+        # Картинка на фон
+        # self.bg = pygame.image.load("images/bg.jpg")
 
         self.stats = GameStats(self)
         self.sb = Scoreboard(self)
-
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
-
         self.aliens = pygame.sprite.Group()
+
         self._create_fleet()
 
         self.button = Button(self, "Play", (0, 200, 0))
-        self.hard_button = Button(self, "Hard Mode", (200, 20, 0), 200)
+        self.hard_button = Button(self, "Hard Mode", (200, 20, 0), 90)
 
         self.intro = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
@@ -81,6 +83,7 @@ class AlienInvasion:
             self.ship.moving_left = False
 
     def _check_play_button_events(self, flag=False):
+        """Нажатие на кнопку начала игры"""
         mouse_pos = pygame.mouse.get_pos()
         if self.button.rect.collidepoint(mouse_pos) or flag:
             self.settings.init_dynamic_settings()
@@ -90,6 +93,7 @@ class AlienInvasion:
             self._start_game()
 
     def _start_game(self):
+        """Запуск игры"""
         if not self.stats.game_active:
             self.stats.reset_stats()
             self.stats.game_active = True
@@ -98,10 +102,8 @@ class AlienInvasion:
             self.sb.prep_ships()
             self.aliens.empty()
             self.bullets.empty()
-
             self._create_fleet()
             self.ship.center_ship()
-
             pygame.mouse.set_visible(False)
 
     def _fire_bullet(self):
@@ -173,6 +175,7 @@ class AlienInvasion:
            self.start_new_level()
 
     def start_new_level(self):
+        """Начало нового уровня"""
         self.bullets.empty()
         self._create_fleet()
         self.settings.increase_speed()
@@ -207,6 +210,7 @@ class AlienInvasion:
             pygame.mouse.set_visible(True)
 
     def _check_aliens_bottom(self):
+        """Проверка достижения конца экрана пришельцем"""
         screen_rect = self.screen.get_rect()
         for alien in self.aliens.sprites():
             if alien.rect.bottom >= screen_rect.bottom:
