@@ -14,23 +14,20 @@ class Button:
         self.font = pygame.font.SysFont(None, 48)
 
         self.rect = pygame.Rect(0, 0, self.width, self.height)
-        if not shift:
-            self.rect.center = self.screen_rect.center
-        else:
-            self.rect.centerx = self.screen_rect.centerx
-            self.rect.top = 600
+
+        self.rect.centerx = self.screen_rect.centerx
+        self.rect.top = self.screen_rect.centery + shift
 
         self._prep_msg(msg, shift)
 
     def _prep_msg(self, msg, shift):
+        """Создание кнопки"""
         self.msg_image = self.font.render(msg, True, self.text_color, self.button_color)
         self.msg_image_rect = self.msg_image.get_rect()
-        if not shift:
-            self.msg_image_rect.center = self.rect.center
-        else:
-            self.msg_image_rect.centerx = self.rect.centerx
-            self.msg_image_rect.top = 610
+        self.msg_image_rect.centerx = self.rect.centerx
+        self.msg_image_rect.top = self.screen_rect.centery + shift + 10
 
     def draw_button(self):
+        """Отрисовка кнопки"""
         self.screen.fill(self.button_color, self.rect)
         self.screen.blit(self.msg_image, self.msg_image_rect)
