@@ -6,6 +6,7 @@ This is the educational project representing the game Alien Invasion
 - [Requirements](#requirements)
 - [Quick start](#quick-start)
 - [Architecture](#architecture)
+- [Overview](#overview)
 
 # How it works
 The game is implemented in the Python programming language using the pygame library. The project was implemented according to the OOP paradigm.
@@ -28,3 +29,40 @@ The project contains 8 files:
 * ▶️ button.py - contains Button class (init button, button logic) 
 * 🏆 scoreboard.py - contains Scoreboard class (init scoreboard)
 * 📶 game_stats.py - contains GameStats class (init game stats)
+
+The Alien Invasion game contains 8 classes:
+```python
+class AlienInvasion   # The main class in the game. Main game logic.
+```
+```python
+class Ship(Sprite)    # Create the ship
+```
+```python
+class Settings        # All of the settings in the game
+```
+```python
+class Alien(Sprite)   # Create aliens
+```
+```python
+class Bullet(Sprite)  # Create bullets
+```
+```python
+class GameStats       # Initialize main game stats
+```
+```python
+class Button          # Initialize buttons
+```
+```python
+class Scoreboard      # Initialize scoreboard
+```
+
+# Overview
+
+The intro window:
+![Intro](https://github.com/xmzboy/Alien-Invasion/blob/main/readme_images/intro.PNG)
+
+The Game pre-start:
+![PreStartGame](https://github.com/xmzboy/Alien-Invasion/blob/main/readme_images/pre_start.PNG)
+
+The Game:
+![Game](https://github.com/xmzboy/Alien-Invasion/blob/main/readme_images/game.PNG)
