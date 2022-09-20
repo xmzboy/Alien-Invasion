@@ -58,6 +58,11 @@ class Scoreboard      # Initialize scoreboard
 
 # Overview
 
+The ship:
+
+![Ship](https://github.com/xmzboy/Alien-Invasion/blob/main/readme_images/ship.PNG)
+___
+
 The intro window:
 
 ![Intro](https://github.com/xmzboy/Alien-Invasion/blob/main/readme_images/intro.PNG)
