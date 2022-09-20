@@ -63,11 +63,6 @@ The intro window:
 ![Intro](https://github.com/xmzboy/Alien-Invasion/blob/main/readme_images/intro.PNG)
 ___
 
-The Game pre-start:
-
-![PreStartGame](https://github.com/xmzboy/Alien-Invasion/blob/main/readme_images/pre_start.PNG)
-___
-
 The Game:
 
 ![Game](https://github.com/xmzboy/Alien-Invasion/blob/main/readme_images/game.PNG)
